@@ -143,9 +143,15 @@ namespace PROG6221POE
             return "Successfully scaled recipe";
         }
 
-        public string EraseRecipe() 
+        public string EraseRecipe(string recipeName, string[] ingredients, double[] amounts, string[] measurements, string[] steps) 
         {
-            return "";
+            recipeName = null;
+            ingredients = null;
+            amounts = null;
+            measurements = null;
+            steps = null;
+
+            return "Succesfully erased Recipe";
         }
 
 

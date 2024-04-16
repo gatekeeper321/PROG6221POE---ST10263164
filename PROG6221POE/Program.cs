@@ -62,16 +62,16 @@ namespace PROG6221POE
 
             while (validOption == false) 
             {
-                Console.WriteLine("Welcome to the Cooking Helper!\nPlease select an option below:\n1) Create a new recipe\n2) View Recipe\n3)\n4) EXIT");
+                Console.WriteLine("Welcome to the Cooking Helper!\nPlease select an option below:\n1) Create a new recipe\n2) View Recipe\n3)Scale Recipe\n4)Erase Recipe\n5) EXIT");
                 Console.WriteLine("-------------------------------------------------------------------------------------------------------");
                 option = Console.ReadLine();
 
-                if (option == "1" || option == "2" || option == "3")
+                if (option == "1" || option == "2" || option == "3" || option == "4")
                 {
                     Console.WriteLine("-------------------------------------------------------------------------------------------------------");
                     validOption = true;
                 }
-                else if (option == "4")
+                else if (option == "5")
                 {
                     System.Environment.Exit(0); //https://www.c-sharpcorner.com/UploadFile/c713c3/how-to-exit-in-C-Sharp/
                 }
