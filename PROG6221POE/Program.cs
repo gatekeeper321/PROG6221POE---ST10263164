@@ -58,7 +58,8 @@ namespace PROG6221POE
                 }
                 else if (option == "4") 
                 {
-                    
+                    Recipe recipe = new Recipe();
+                    recipe.EraseRecipe(recipeName, ingredients, amounts, measurements, steps);
                 }
 
             }  
