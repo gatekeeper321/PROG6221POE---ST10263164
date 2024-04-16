@@ -113,10 +113,7 @@ namespace PROG6221POE
             for (int i = 0; i < amounts.Length; i++) 
             {
                 amounts[i] = amounts[i] * scale;
-            }
 
-            for (int i = 0; i < amounts.Length; i++)
-            {
                 if (amounts[i] >= 3 && measurements[i] == "Teaspoons")
                 {
                     amounts[i] = amounts[i] / 3;
@@ -127,19 +124,21 @@ namespace PROG6221POE
                     amounts[i] = amounts[i] / 16;
                     measurements[i] = "Cups";
                 }
-                else if (amounts[i] > 1 && measurements[i] == "Tablespoons")
+                else if (amounts[i] < 1 && measurements[i] == "Tablespoons")
                 {
                     amounts[i] = amounts[i] * 3;
                     measurements[i] = "Teaspoons";
                 }
-                else if (amounts[i] > 1 && measurements[i] == "Cups")
+                else if (amounts[i] < 1 && measurements[i] == "Cups")
                 {
+                    Console.WriteLine("VSVSBSEBSEB");
                     amounts[i] = amounts[i] * 16;
                     measurements[i] = "Tablespoons";
                 }
-
+                else { }
             }
 
+       
             return "Successfully scaled recipe";
         }
 
