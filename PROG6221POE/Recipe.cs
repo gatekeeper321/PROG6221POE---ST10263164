@@ -11,6 +11,7 @@ namespace PROG6221POE
 {
     internal class Recipe
     {
+        double scale = 1;
         public string CreateRecipe(string[] ingredients, double[] amounts, string[] measurements, string[] steps) 
         {
             string input = "";
@@ -67,7 +68,7 @@ namespace PROG6221POE
 
         public string ViewRecipe(string recipeName, string[] ingredients, double[] amounts, string[] measurements, string[] steps) 
         {
-            string recipe;
+            string recipe = "";
             recipe = "\t" + recipeName;
             recipe = recipe + "\n\nIngredients needed\n";
             for (int i = 0; i < ingredients.Length; i++) 
@@ -88,7 +89,7 @@ namespace PROG6221POE
 
         public string ScaleRecipe(double[] amounts, string[] measurements) 
         {
-            double scale = 1;
+
             bool chooseScale = false;
 
             while (!chooseScale)
@@ -140,6 +141,39 @@ namespace PROG6221POE
 
        
             return "Successfully scaled recipe";
+        }
+
+        public string rescaleRecipe(double[] amounts, string[] measurements) 
+        {
+
+            for (int i = 0; i < amounts.Length; i++)
+            {
+                amounts[i] = amounts[i] / scale; // sets new scale
+
+                if (amounts[i] >= 3 && measurements[i] == "Teaspoons") // if statement changes measurements from teaspoons to tablespoons to cups and back if nescesary
+                {
+                    amounts[i] = amounts[i] / 3;
+                    measurements[i] = "Tablespoons";
+                }
+                else if (amounts[i] >= 16 && measurements[i] == "Tablespoons")
+                {
+                    amounts[i] = amounts[i] / 16;
+                    measurements[i] = "Cups";
+                }
+                else if (amounts[i] < 1 && measurements[i] == "Tablespoons")
+                {
+                    amounts[i] = amounts[i] * 3;
+                    measurements[i] = "Teaspoons";
+                }
+                else if (amounts[i] < 1 && measurements[i] == "Cups")
+                {
+                    amounts[i] = amounts[i] * 16;
+                    measurements[i] = "Tablespoons";
+                }
+                else { }
+            }
+
+            return "Recipe rescaled";
         }
 
         public string EraseRecipe(string recipeName, string[] ingredients, double[] amounts, string[] measurements, string[] steps) //all values are set to null so they may be ready for a new recipe

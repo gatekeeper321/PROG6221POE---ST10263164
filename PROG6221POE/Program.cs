@@ -58,7 +58,12 @@ namespace PROG6221POE
                     Recipe recipe = new Recipe();
                     recipe.ScaleRecipe(amounts, measurements);
                 }
-                else if (option == "4") 
+                else if (option == "4") //rescales recipe to original scale
+                {
+                    Recipe recipe = new Recipe();
+                    recipe.rescaleRecipe(amounts, measurements);
+                }
+                else if (option == "5")
                 {
                     Recipe recipe = new Recipe();
                     recipe.EraseRecipe(recipeName, ingredients, amounts, measurements, steps);
@@ -73,16 +78,16 @@ namespace PROG6221POE
 
             while (validOption == false) // while loop allows code to loop until a valid input is entered
             {
-                Console.WriteLine("Welcome to the Cooking Helper!\nPlease select an option below:\n1) Create a new recipe\n2) View Recipe\n3)Scale Recipe\n4)Erase Recipe\n5) EXIT");
+                Console.WriteLine("Welcome to the Cooking Helper!\nPlease select an option below:\n1) Create a new recipe\n2) View Recipe\n3)Scale Recipe\n4) Rescale recipe\n5)Erase Recipe\n6) EXIT");
                 Console.WriteLine("-------------------------------------------------------------------------------------------------------");
                 option = Console.ReadLine();
 
-                if (option == "1" || option == "2" || option == "3" || option == "4")
+                if (option == "1" || option == "2" || option == "3" || option == "4" || option == "5")
                 {
                     Console.WriteLine("-------------------------------------------------------------------------------------------------------");
                     validOption = true; // ends loop once valid option is chosen
                 }
-                else if (option == "5")
+                else if (option == "6")
                 {
                     System.Environment.Exit(0); //https://www.c-sharpcorner.com/UploadFile/c713c3/how-to-exit-in-C-Sharp/
                 }
