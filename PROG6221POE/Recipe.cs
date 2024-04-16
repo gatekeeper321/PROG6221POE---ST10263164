@@ -67,14 +67,19 @@ namespace PROG6221POE
         public string ViewRecipe(string recipeName, string[] ingredients, int[] amounts, string[] measurements, string[] steps) 
         {
             string recipe;
-            recipe = recipeName;
-            recipe = recipe + "\n\nINGREDIENTS";
+            recipe = "\t" + recipeName;
+            recipe = recipe + "\nIngredients needed";
             for (int i = 0; i < ingredients.Length; i++) 
             {
-                
+                recipe = recipe + "\n" + ingredients[i] + "\t" + amounts[i] + " " + measurements[i];
             }
+            for (int i = 0; i < steps.Length; i++)
+            {
+                recipe = recipe + "\nSTEP " + i + "\n" + steps[i];
+            }
+            recipe = recipe + "\n-------------------------------------------------------------------------------------------------------";
 
-                return recipe;
+            return recipe;
         }
 
 

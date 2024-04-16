@@ -15,24 +15,29 @@ namespace PROG6221POE
         {
             bool bMenu = true;
             string recipeName;
+            string[] ingredients = null;
+            int[] amounts = null;
+            string[] measurements = null;
+            string[] steps = null;
+
             while (bMenu == true) //having while loop allows menu to redisplay when finsihed with a specific task
             {
                 string option = Program.DisplayMenu();
 
                 if (option == "1")
                 {
-                    Console.WriteLine("Please enter the of this recipe");
+                    Console.WriteLine("Please enter the name of this recipe");
                     recipeName = Console.ReadLine();
 
                     Console.WriteLine("Please enter the number of ingredients in this recipe");
                     int arraySize = int.Parse(Console.ReadLine());
-                    string[] ingredients = new string[arraySize];
-                    int[] amounts = new int[arraySize];
-                    string[] measurements = new string[arraySize];
+                    ingredients = new string[arraySize];
+                    amounts = new int[arraySize];
+                    measurements = new string[arraySize];
 
                     Console.WriteLine("Please enter the number of steps in this recipe");
                     int arrayStepsSize = int.Parse(Console.ReadLine());
-                    string[] steps = new string[arrayStepsSize];
+                    steps = new string[arrayStepsSize];
 
                     Console.WriteLine("-------------------------------------------------------------------------------------------------------");
 
@@ -43,7 +48,9 @@ namespace PROG6221POE
                 }
                 else if (option == "2")
                 {
-                    
+                    Recipe recipe = new Recipe();
+                    recipe.CreateRecipe(ingredients, amounts, measurements, steps);
+                    Console.WriteLine(Recipe.);
                 }
 
             }  
