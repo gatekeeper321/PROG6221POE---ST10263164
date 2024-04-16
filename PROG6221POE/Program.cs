@@ -1,4 +1,6 @@
-﻿using System;
+﻿// William McPetrie ST10263164 PROGPOE PART 1
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -61,7 +63,6 @@ namespace PROG6221POE
                     Recipe recipe = new Recipe();
                     recipe.EraseRecipe(recipeName, ingredients, amounts, measurements, steps);
                 }
-
             }  
         }
 
