@@ -15,7 +15,7 @@ namespace PROG6221POE
         {
             bool bMenu = true;
             string recipeName = "";
-            string[] ingredients = null;
+            string[] ingredients = null; //arrays are instantiated as null so their size can be altered later on
             double[] amounts = null;
             string[] measurements = null;
             string[] steps = null;
@@ -24,24 +24,24 @@ namespace PROG6221POE
             {
                 string option = Program.DisplayMenu();
 
-                if (option == "1")
+                if (option == "1") //CREATE RECIPE
                 {
                     Console.WriteLine("Please enter the name of this recipe");
                     recipeName = Console.ReadLine();
 
                     Console.WriteLine("Please enter the number of ingredients in this recipe");
                     int arraySize = int.Parse(Console.ReadLine());
-                    ingredients = new string[arraySize];
+                    ingredients = new string[arraySize]; //setting size of arrays that user set
                     amounts = new double[arraySize];
                     measurements = new string[arraySize];
 
                     Console.WriteLine("Please enter the number of steps in this recipe");
                     int arrayStepsSize = int.Parse(Console.ReadLine());
-                    steps = new string[arrayStepsSize];
+                    steps = new string[arrayStepsSize]; // sets size of array to number of steps there will be
 
                     Console.WriteLine("-------------------------------------------------------------------------------------------------------");
 
-                    Recipe recipe = new Recipe();
+                    Recipe recipe = new Recipe(); //instatntiates recipe class
                     recipe.CreateRecipe(ingredients, amounts, measurements, steps);
 
                     Console.WriteLine("-------------------------------------------------------------------------------------------------------");
@@ -60,7 +60,7 @@ namespace PROG6221POE
             string option = "";
             bool validOption= false;
 
-            while (validOption == false) 
+            while (validOption == false) // while loop allows code to loop until a valid input is entered
             {
                 Console.WriteLine("Welcome to the Cooking Helper!\nPlease select an option below:\n1) Create a new recipe\n2) View Recipe\n3)Scale Recipe\n4)Erase Recipe\n5) EXIT");
                 Console.WriteLine("-------------------------------------------------------------------------------------------------------");
@@ -69,7 +69,7 @@ namespace PROG6221POE
                 if (option == "1" || option == "2" || option == "3" || option == "4")
                 {
                     Console.WriteLine("-------------------------------------------------------------------------------------------------------");
-                    validOption = true;
+                    validOption = true; // ends loop once valid option is chosen
                 }
                 else if (option == "5")
                 {
