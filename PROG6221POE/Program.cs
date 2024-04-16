@@ -14,9 +14,9 @@ namespace PROG6221POE
         public static void Main(string[] args)
         {
             bool bMenu = true;
-            string recipeName;
+            string recipeName = "";
             string[] ingredients = null;
-            int[] amounts = null;
+            double[] amounts = null;
             string[] measurements = null;
             string[] steps = null;
 
@@ -32,7 +32,7 @@ namespace PROG6221POE
                     Console.WriteLine("Please enter the number of ingredients in this recipe");
                     int arraySize = int.Parse(Console.ReadLine());
                     ingredients = new string[arraySize];
-                    amounts = new int[arraySize];
+                    amounts = new double[arraySize];
                     measurements = new string[arraySize];
 
                     Console.WriteLine("Please enter the number of steps in this recipe");
@@ -49,8 +49,7 @@ namespace PROG6221POE
                 else if (option == "2")
                 {
                     Recipe recipe = new Recipe();
-                    recipe.CreateRecipe(ingredients, amounts, measurements, steps);
-                    Console.WriteLine(Recipe.);
+                    Console.WriteLine(recipe.ViewRecipe(recipeName, ingredients, amounts, measurements, steps));
                 }
 
             }  
@@ -61,12 +60,12 @@ namespace PROG6221POE
             string option = "";
             bool validOption= false;
 
-            Console.WriteLine("Welcome to the Cooking Helper!\nPlease select an option below:\n1) Create a new recipe\n2) View Recipe\n3)\n4) EXIT");
-            Console.WriteLine("-------------------------------------------------------------------------------------------------------");
-            option = Console.ReadLine();
-
             while (validOption == false) 
             {
+                Console.WriteLine("Welcome to the Cooking Helper!\nPlease select an option below:\n1) Create a new recipe\n2) View Recipe\n3)\n4) EXIT");
+                Console.WriteLine("-------------------------------------------------------------------------------------------------------");
+                option = Console.ReadLine();
+
                 if (option == "1" || option == "2" || option == "3")
                 {
                     Console.WriteLine("-------------------------------------------------------------------------------------------------------");

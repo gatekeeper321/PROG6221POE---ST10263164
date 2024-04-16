@@ -9,7 +9,7 @@ namespace PROG6221POE
 {
     internal class Recipe
     {
-        public string CreateRecipe(string[] ingredients, int[] amounts, string[] measurements, string[] steps) 
+        public string CreateRecipe(string[] ingredients, double[] amounts, string[] measurements, string[] steps) 
         {
             string input = "";
 
@@ -64,22 +64,88 @@ namespace PROG6221POE
                 return "Well done! Recipe successfully created!\n-------------------------------------------------------------------------------------------------------";
         }
 
-        public string ViewRecipe(string recipeName, string[] ingredients, int[] amounts, string[] measurements, string[] steps) 
+        public string ViewRecipe(string recipeName, string[] ingredients, double[] amounts, string[] measurements, string[] steps) 
         {
             string recipe;
             recipe = "\t" + recipeName;
-            recipe = recipe + "\nIngredients needed";
+            recipe = recipe + "\n\nIngredients needed\n";
             for (int i = 0; i < ingredients.Length; i++) 
             {
                 recipe = recipe + "\n" + ingredients[i] + "\t" + amounts[i] + " " + measurements[i];
             }
+
+            recipe = recipe + "\n";
+
             for (int i = 0; i < steps.Length; i++)
             {
-                recipe = recipe + "\nSTEP " + i + "\n" + steps[i];
+                recipe = recipe + "\n\tSTEP " + i + "\n" + steps[i];
             }
             recipe = recipe + "\n-------------------------------------------------------------------------------------------------------";
 
             return recipe;
+        }
+
+        public string ScaleRecipe(double[] amounts, string[] measurements) 
+        {
+            double scale = 1;
+            bool chooseScale = false;
+
+            while (!chooseScale)
+            {
+                Console.WriteLine("please select one of the following scaling options:\n1) 0.5\n2) 2\n3) 3");
+                if (Console.ReadLine() == "1") 
+                {
+                    scale = 0.5;
+                    chooseScale = true;
+                }
+                else if (Console.ReadLine() == "2") 
+                {
+                    scale = 2;
+                    chooseScale = true;
+                }
+                else if(Console.ReadLine() == "3") 
+                {
+                    scale = 3;
+                    chooseScale = true;
+                }
+            }
+
+            for (int i = 0; i < amounts.Length; i++) 
+            {
+                amounts[i] = amounts[i] * scale;
+            }
+
+            for (int i = 0; i < amounts.Length; i++)
+            {
+                if (amounts[i] >= 3 && measurements[i] == "Teaspoons")
+                {
+                    amounts[i] = amounts[i] / 3;
+                    measurements[i] = "Tablespoons";
+                }
+                else if (amounts[i] >= 16 && measurements[i] == "Tablespoons")
+                {
+                    amounts[i] = amounts[i] / 16;
+                    measurements[i] = "Cups";
+                }
+                else if (amounts[i] > 1 && measurements[i] == "Tablespoons")
+                {
+                    amounts[i] = amounts[i] * 3;
+                    measurements[i] = "Teaspoons";
+                }
+                else if (amounts[i] > 1 && measurements[i] == "Cups")
+                {
+                    amounts[i] = amounts[i] * 16;
+                    measurements[i] = "Tablespoons";
+                }
+
+            }
+
+            return "Successfully scaled recipe";
+        }
+
+        public string EraseRecipe() 
+        {
+            return "";
         }
 
 
