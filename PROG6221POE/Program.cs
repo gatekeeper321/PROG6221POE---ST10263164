@@ -51,6 +51,15 @@ namespace PROG6221POE
                     Recipe recipe = new Recipe();
                     Console.WriteLine(recipe.ViewRecipe(recipeName, ingredients, amounts, measurements, steps));
                 }
+                else if (option == "3")
+                {
+                    Recipe recipe = new Recipe();
+                    recipe.ScaleRecipe(amounts, measurements);
+                }
+                else if (option == "4") 
+                {
+                    
+                }
 
             }  
         }
